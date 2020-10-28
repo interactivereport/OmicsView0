@@ -11,5 +11,5 @@ Fergal Casey*, Soumya Negi*, Joost Groot*, Jing Zhu*, Maria Zavodszky*, Derrick 
 
 Demo System: http://omicsview.org/
 
-Documentation: http://omicsview.org/docs/
+Installation Guide: http://omicsview.org/docs/
 
