@@ -1,5 +1,5 @@
 # OmicsView
 
-Demo System: http://omicsview.org
+Demo System: http://omicsview.org/
 
 Documentation: http://omicsview.org/docs/
