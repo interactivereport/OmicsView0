@@ -1,2 +1,5 @@
 # OmicsView
-Please visit http://omicsview.org/docs/ for the installation instructions.
+
+Demo System: http://omicsview.org
+
+Documentation: http://omicsview.org/docs/
