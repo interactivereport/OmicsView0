@@ -13,3 +13,4 @@ Demo System: http://omicsview.org/
 
 Installation Guide: http://omicsview.org/docs/
 
+Please contact Baohong Zhang (baohongz@gmail.com) if you have any question about this project.
