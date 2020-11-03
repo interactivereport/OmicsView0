@@ -4,10 +4,10 @@ OmicsView is a web application to visualize genomic data. It was discussed in th
 
 OmicsView: omics data analysis through interactive visual analytics
 
-Fergal Casey*, Soumya Negi*, Joost Groot*, Jing Zhu*, Maria Zavodszky*, Derrick Cheng#, Dongdong Lin*, Sally John*, Michelle A. Penny*, David Sexton*, Baohong Zhang*
+Fergal Casey<sup>1</sup>, Soumya Negi<sup>1</sup>, Joost Groot<sup>1</sup>, Jing Zhu<sup>1</sup>, Maria Zavodszky<sup>1</sup>, Derrick Cheng<sup>2</sup>, Dongdong Lin<sup>1</sup>, Sally John<sup>1</sup>, Michelle A. Penny<sup>1</sup>, David Sexton<sup>1</sup>, Baohong Zhang<sup>1</sup>
 
-*Translational Biology, Research Development, Biogen, Inc., Cambridge, MA, 02142, USA  
-#BioInfoRx, Inc., 510 Charmany Dr, Suite 275A, Madison, WI 53719, USA
+<sup>1</sup>Translational Biology, Research Development, Biogen, Inc., Cambridge, MA, 02142, USA  
+<sup>2</sup>BioInfoRx, Inc., 510 Charmany Dr, Suite 275A, Madison, WI 53719, USA
 
 Demo System: http://omicsview.org/
 
