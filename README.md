@@ -10,6 +10,7 @@ Fergal Casey<sup>1</sup>, Soumya Negi<sup>1</sup>, Joost Groot<sup>1</sup>, Jing
 <sup>2</sup>BioInfoRx, Inc., 510 Charmany Dr, Suite 275A, Madison, WI 53719, USA
 
 Demo System: http://omicsview.org/
+
 OmicsView Supplementary: https://github.com/interactivereport/OmicsView/blob/main/OmicsView_Supp_v5.0.pdf
 
 Installation Guide: http://omicsview.org/docs/
