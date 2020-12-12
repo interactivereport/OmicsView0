@@ -1,6 +1,6 @@
 # OmicsView
 
-OmicsView is a web application to visualize genomic data. It was discussed in this publication:
+OmicsView is a web application to visualize omics data. It was discussed in this publication:
 
 OmicsView: omics data analysis through interactive visual analytics
 
