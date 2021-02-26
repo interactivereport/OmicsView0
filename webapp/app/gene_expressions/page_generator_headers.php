@@ -40,8 +40,7 @@ echo "<head>";
 	}
     
     if (!isset($PAGE['Plugins']['dataTables']) || ($PAGE['Plugins']['dataTables'] == 1)){
-    	//echo "<link rel='stylesheet' type='text/css' href='./js/dataTables/1.10.19/jquery.dataTables.min.css'>";
-    	echo "<link rel='stylesheet' type='text/css' href='./js/dataTables/1.10.20/jquery.dataTables.min.css'>\n";
+    	echo "<link rel='stylesheet' type='text/css' href='./js/dataTables/1.10.23/jquery.dataTables.min.css'>\n";
     	echo "<link rel='stylesheet' type='text/css' href='./js/dataTables.buttons/1.5.6/buttons.dataTables.min.css'>\n";
     	echo "<link rel='stylesheet' type='text/css' href='./js/dataTables.select/1.3.0/select.dataTables.min.css'>\n";
     }
@@ -78,10 +77,8 @@ echo "<head>";
     
     
 	if (!isset($PAGE['Plugins']['dataTables']) || ($PAGE['Plugins']['dataTables'] == 1)){
-		
-		/*<script type='text/javascript' src='./js/dataTables/1.10.19/jquery.dataTables.min.js'></script>*/
 		echo "
-		<script type='text/javascript' src='./js/dataTables/1.10.20/jquery.dataTables.min.js'></script>\n
+		<script type='text/javascript' src='./js/dataTables/1.10.23/jquery.dataTables.min.js'></script>\n
 		<script type='text/javascript' src='./js/dataTables.buttons/1.5.6/dataTables.buttons.min.js'></script>\n
 		<script type='text/javascript' src='./js/dataTables.buttons/1.5.6/buttons.flash.min.js'></script>\n
 		<script type='text/javascript' src='./js/jszip/2.5.0/jszip.min.js'></script>\n
@@ -113,7 +110,8 @@ echo "<head>";
 	}
     
     if ($PAGE['Plugins']['plotly'] == 1){
-        echo "<script type='text/javascript' src='./js/plotly/plotly-1.51.2/plotly.min.js'></script>\n";
+		/*        echo "<script type='text/javascript' src='http://cdn.plot.ly/plotly-latest.min.js'></script>\n"; */
+        echo "<script type='text/javascript' src='./js/plotly/plotly-1.58.4/plotly.min.js'></script>\n";
 	}
 	
 	if ($PAGE['Plugins']['pdfObject'] == 1){

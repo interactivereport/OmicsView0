@@ -468,17 +468,4 @@ if (true){
 $APP_CONFIG['canvasxpress']['Data_Limit_Bubble_Plot'] = 2000;
 
 
-if (true){
-	$APP_CONFIG['APP']['CellMap']['Method']['NNLS_logPartial'] 	= 'NNLS Log Partial';
-	$APP_CONFIG['APP']['CellMap']['Method']['NNLS_logFull'] 	= 'NNLS Log Full';
-	$APP_CONFIG['APP']['CellMap']['Method']['NNLS_linearNone'] 	= 'NNLS Linear None';
-	
-	$APP_CONFIG['APP']['CellMap']['Method_All'] = $APP_CONFIG['APP']['CellMap']['Method'];
-	$APP_CONFIG['APP']['CellMap']['Method_All']['NNLS_logDF'] 		= 'NNLS Log DF';
-	
-	$APP_CONFIG['APP']['CellMap']['Cutoff']['0.05'] 	= '0.05';
-	$APP_CONFIG['APP']['CellMap']['Cutoff']['0.01'] 	= '0.01';
-	$APP_CONFIG['APP']['CellMap']['Cutoff']['0.001'] 	= '0.001';
-}
-
 ?>

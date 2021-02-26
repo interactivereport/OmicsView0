@@ -9,7 +9,7 @@ function prepareSingleBubblePlotDataByGeneName_CanvasXpress($geneIndex = -1, $ot
 	
 	if ($geneIndex < 0) return false;
 	
-	$version = $APP_CONFIG['Version']['Cache Version'];
+	$version = '2021-01-27 23:43';
 	
 	$cacheKey = __FUNCTION__ . '::' . md5($geneIndex . '::' . 
 											json_encode($otherOptions) . '::' . 
@@ -494,7 +494,7 @@ function prepareSingleBubblePlotHistogram($geneIndex = -1, $otherOptions = array
 	
 	if ($geneIndex < 0) return false;
 	
-	$version = $APP_CONFIG['Version']['Cache Version'];
+	$version = '2021-01-27 23:43';
 	
 	$cacheKey = __FUNCTION__ . '::' . md5($geneIndex . '::' . 
 											json_encode($otherOptions) . '::' . 
@@ -625,7 +625,7 @@ function prepareSingleBubblePlotDataByGeneName($geneIndex = -1, $otherOptions = 
 	
 	if ($geneIndex < 0) return false;
 	
-	$version = $APP_CONFIG['Version']['Cache Version'];
+	$version = '2021-01-27 23:43';
 	
 	$cacheKey = __FUNCTION__ . '::' . md5($geneIndex . '::' . 
 											json_encode($otherOptions) . '::' . 
@@ -724,16 +724,26 @@ function prepareSingleBubblePlotDataByGeneName($geneIndex = -1, $otherOptions = 
 			if (true){
 				$comparison[$yAxisColumn] = trim($comparison[$yAxisColumn]);
 				if (($comparison[$yAxisColumn] == '') || ($comparison[$yAxisColumn] == '.') || (strtolower($comparison[$yAxisColumn]) == 'na')){
-					unset($allComparisonData[$tempKey]);
-					continue;	
+					
+					if ($otherOptions['keep_blank']){
+						$allComparisons[$comparisonIndex][$yAxisColumn] = $APP_CONFIG['Blank_Value'];
+					} else {
+						unset($allComparisonData[$tempKey]);
+						continue;
+					}
 				}
 			}
 			
 			if (true){
 				$comparison[$colorByColumn] = trim($comparison[$colorByColumn]);
 				if (($comparison[$colorByColumn] == '') || ($comparison[$colorByColumn] == '.') || (strtolower($comparison[$colorByColumn]) == 'na')){
-					unset($allComparisonData[$tempKey]);
-					continue;
+					
+					if ($otherOptions['keep_blank']){
+						$allComparisons[$comparisonIndex][$colorByColumn] = $APP_CONFIG['Blank_Value'];
+					} else {
+						unset($allComparisonData[$tempKey]);
+						continue;
+					}
 				}
 			}
 			
@@ -874,7 +884,7 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex = -1,
 	
 	if ($geneIndex < 0) return false;
 	
-	$version = $APP_CONFIG['Version']['Cache Version'];
+	$version = '2021-01-27 23:43';
 	
 	$cacheKey = __FUNCTION__ . '::' . md5($geneIndex . '::' . 
 											json_encode($otherOptions) . '::' . 
@@ -904,12 +914,8 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex = -1,
 	unset($results['ComparisonRecords']);
 	
 	
-	
-	
 	foreach($allComparisonData as $tempKey => $comparisonData){
-		
-		
-		
+
 		$comparisonIndex 	= $comparisonData['ComparisonIndex'];
 		$comparison 		= $allComparisons[$comparisonIndex];
 		$valueColumn 		= $otherOptions['marker'];
@@ -919,6 +925,10 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex = -1,
 		if (true){		
 			$yAxisColumn	= $otherOptions['y-axis'];
 			$currentYAxis	= $comparison[$yAxisColumn];
+			
+			if ($currentYAxis == ''){
+				$currentYAxis = $APP_CONFIG['Blank_Value'];	
+			}
 		}
 		
 		if (true){
@@ -1017,8 +1027,10 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex = -1,
 		$temp[] = "p-value: {$comparisonData['PValue']}";
 		$temp[] = "Adjusted P-value: {$comparisonData['AdjustedPValue']}";
 		$temp[] = "log2(Fold Change): {$comparisonData['Log2FoldChange']}";
+		$temp[] = "";
+		$temp[] = "Double click to review the comparison details";
 		$results['Chart'][$traceID]['text'][] = '"' . sanitizeJavaScriptValue(implode('<br />', $temp)) . '"';
-		
+		$results['Chart'][$traceID]['ComparisonIndex'][] = $comparisonIndex;
 		
 		if ($colorByColumn != ''){
 			$currentColor = getRandomRGBColor($currentColorBy, $globalColorIndex, 0);
@@ -1352,7 +1364,7 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Subplot_v2($geneIndex = -1
 	
 	if ($geneIndex < 0) return false;
 	
-	$version = $APP_CONFIG['Version']['Cache Version'];
+	$version = '2021-01-27 23:43';
 	
 	$cacheKey = __FUNCTION__ . '::' . md5($geneIndex . '::' . 
 											json_encode($otherOptions) . '::' . 
@@ -1495,7 +1507,10 @@ function prepareSingleBubblePlotDataByGeneName_Plotly_Subplot_v2($geneIndex = -1
 		$temp[] = "p-value: {$comparisonData['PValue']}";
 		$temp[] = "Adjusted P-value: {$comparisonData['AdjustedPValue']}";
 		$temp[] = "log2(Fold Change): {$comparisonData['Log2FoldChange']}";
+		$temp[] = "";
+		$temp[] = "Double click to review the comparison details";
 		$results['Chart'][$traceID]['text'][] = '"' . sanitizeJavaScriptValue(implode('<br />', $temp)) . '"';
+		$results['Chart'][$traceID]['ComparisonIndex'][] = $comparisonIndex;
 		
 		
 		if ($colorByColumn != ''){

@@ -58,6 +58,7 @@ $(document).ready(function(){
 		var <?php echo $traceInfo['ID']; ?> = {
 			x: [<?php echo implode(',', $traceInfo['x']); ?>],
 			y: [<?php echo implode(',', $traceInfo['y']); ?>],
+			ComparisonIndex: [<?php echo implode(',', $traceInfo['ComparisonIndex']); ?>],
 			hoverinfo: "text",
 			text: [<?php echo implode(',', $traceInfo['text']); ?>],
 			mode: "markers",
@@ -200,7 +201,11 @@ $(document).ready(function(){
 		
 	};
 	
-	Plotly.newPlot('plotSection', data, layout, otherOptions).then(function(gd){
+	
+	var PlotlyObj = document.getElementById('plotSection');
+	
+	//Plotly.newPlot('plotSection', data, layout, otherOptions).then(function(gd){
+	Plotly.newPlot(PlotlyObj, data, layout, otherOptions).then(function(gd){
 		
 		<?php if (!$_POST['API']){ ?>
 		  Plotly.toImage(gd, {
@@ -221,6 +226,23 @@ $(document).ready(function(){
 								});
 		<?php } ?>
 		});
+		
+	PlotlyObj.on('plotly_click', function(e){
+		if (typeof(e.points[0].pointIndex) != "undefined"){
+			var pointIndex = e.points[0].pointIndex;
+			
+			if (typeof(e.points[0].data.ComparisonIndex[pointIndex]) != "undefined"){
+				var comparisonIndex = e.points[0].data.ComparisonIndex[pointIndex];	
+			}
+			
+			if (typeof(comparisonIndex) != "undefined"){
+				var myWindow = window.open("app_comparison_review.php?ID=" + comparisonIndex, '_blank');
+			}
+			
+		}
+	});
+	
+		
 		
 	<?php if (!$_POST['API']){ ?>
 	$("#<?php echo $saveSVGTrigger; ?>").click(function(){

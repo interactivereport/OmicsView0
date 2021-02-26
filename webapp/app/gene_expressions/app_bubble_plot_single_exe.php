@@ -48,6 +48,7 @@ if (true){
 	$otherOptions['shapeBy'] 								= $_POST['shapeBy'];
 	$otherOptions['y-axis']									= $_POST['y-axis'];
 	$otherOptions['y-axis_settings'] 						= intval($_POST['y-axis_settings']);
+	$otherOptions['keep_blank'] 							= $_POST['keep_blank'];
 	
 	if ($otherOptions['y-axis_settings'] == -1){
 		$otherOptions['y-axis_customize'] = array_clean($_POST['y-axis_customize']);
@@ -76,6 +77,10 @@ if ($_POST['graphLibrary'] == ''){
 	$_POST['graphLibrary'] = 'Plotly';	
 }
 
+
+
+
+
 if ($_POST['graphLibrary'] == 'Plotly'){
 	if ($_POST['subplotBy'] == ''){
 		$results = prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex, $otherOptions);
@@ -103,6 +108,8 @@ if ($_POST['graphLibrary'] == 'Plotly'){
 	$results = prepareSingleBubblePlotDataByGeneName_CanvasXpress($geneIndex, $otherOptions);
 	$chartFile = 'app_bubble_plot_single_exe_tab_CanvasXpress.php';
 }
+
+
 
 
 

@@ -607,82 +607,112 @@ echo "<form id='form_application' action='javascript:void(0);' method='post' rol
 	//Modal
 	if (true){
 		$modalID 	= 'advancedOptionSection';
-		$modalTitle = "<h4 class='modal-title'>Chart Dimensions</h4>";
+		$modalTitle = "<h4 class='modal-title'>Advanced Options</h4>";
 
 		$modalBody = "<div>";
 		
+			if (true){
+				
+				
+				$name 			= 'keep_blank';
+				$displayName 	= 'Include Comparison with Empty Attributes';
+				
+				$checked = '';
+				
+				if ($dataArray[$name]){
+					$checked = "checked='checked'";
+				}
+				
+				$modalBody .= "<h5>Data Settings</h5>";	
+				
+				$modalBody .= "<div class='form-check'>";
+						$modalBody .= "<input class='inputForm form-check-input' type='checkbox' id='{$name}' name='{$name}' value='1' {$checked}/>";
+						$modalBody .= "<label for='{$name}' class='form-check-label'>{$displayName}</label>";
+				$modalBody .= "</div>";
+				
+				$modalBody .= "<p class='form-text'>
+							By default, comparison data will be excluded from the plot if its corresponding value is blank. 
+							For example, if y-axis is set to cell type, only comparisons with non-empty cell type will be included in the plot. Check this option if you like to include more comparisons in the result.
+							</p>";
+							
+
+			}
 			
-			$modalBody .= "<p class='form-text'>(Please enter 0 or leave blank if you want the auto settings.)</p>";
-			
-			
-			$modalBody .= "<div class='row'>";
-			
-				if (true){
-					
-					$modalBody .= "<div class='col-5'>";
-					
-					$candidates = array();
-					$candidates['plot_width']['name'] 		= 'Chart Width';
-					
-					$candidates['plot_height']['name'] 		= 'Chart Height';
-					
-					$candidates['margin_top']['name'] 		= 'Margin Top';
-					$candidates['margin_top']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Top'];
-					
-					$candidates['margin_bottom']['name'] 	= 'Margin Bottom';
-					$candidates['margin_bottom']['default'] = $APP_CONFIG['APP']['Bubble_Plot']['margin']['Bottom'];
-					
-					$candidates['margin_left']['name'] 		= 'Margin Left';
-					$candidates['margin_left']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Left'];
-					
-					$candidates['margin_right']['name'] 	= 'Margin Right';
-					$candidates['margin_right']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Right'];
+			$modalBody .= "<hr/>";
 		
-					foreach($candidates as $name => $tempValue){
-						
-						$displayName = $tempValue['name'];
-						
-						if (isset($dataArray[$name])){
-							$value		= $dataArray[$name];
-						} else {
-							$value		= $tempValue['default'];
-						}
-						
-						$value = abs(intval($value));
-						
-						$modalBody .= "<div style='margin-top:12px;'>";
-						
-							$modalBody .= "<div class='form-group row'>";
-				
-								$modalBody .= "<div class='col-4'>";
-									$modalBody .= "<label for='{$name}' class='xcol-form-label'><strong>{$displayName}: &nbsp;</strong></label>";
-								$modalBody .= "</div>";
+			if (true){
+				$modalBody .= "<h5>Chart Dimensions</h5>";			
+				$modalBody .= "<p class='form-text'>(Please enter 0 or leave blank if you want the auto settings.)</p>";
 				
 				
-								$modalBody .= "<div class='col-6'>";
-									$modalBody .= "<input class='inputForm form-control' type='text' id='{$name}' name='{$name}' value='{$value}'/>";
+				$modalBody .= "<div class='row'>";
+					if (true){
+						
+						$modalBody .= "<div class='col-5'>";
+						
+						$candidates = array();
+						$candidates['plot_width']['name'] 		= 'Chart Width';
+						
+						$candidates['plot_height']['name'] 		= 'Chart Height';
+						
+						$candidates['margin_top']['name'] 		= 'Margin Top';
+						$candidates['margin_top']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Top'];
+						
+						$candidates['margin_bottom']['name'] 	= 'Margin Bottom';
+						$candidates['margin_bottom']['default'] = $APP_CONFIG['APP']['Bubble_Plot']['margin']['Bottom'];
+						
+						$candidates['margin_left']['name'] 		= 'Margin Left';
+						$candidates['margin_left']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Left'];
+						
+						$candidates['margin_right']['name'] 	= 'Margin Right';
+						$candidates['margin_right']['default'] 	= $APP_CONFIG['APP']['Bubble_Plot']['margin']['Right'];
+			
+						foreach($candidates as $name => $tempValue){
+							
+							$displayName = $tempValue['name'];
+							
+							if (isset($dataArray[$name])){
+								$value		= $dataArray[$name];
+							} else {
+								$value		= $tempValue['default'];
+							}
+							
+							$value = abs(intval($value));
+							
+							$modalBody .= "<div style='margin-top:12px;'>";
+							
+								$modalBody .= "<div class='form-group row'>";
+					
+									$modalBody .= "<div class='col-4'>";
+										$modalBody .= "<label for='{$name}' class='xcol-form-label'><strong>{$displayName}: &nbsp;</strong></label>";
+									$modalBody .= "</div>";
+					
+					
+									$modalBody .= "<div class='col-6'>";
+										$modalBody .= "<input class='inputForm form-control' type='text' id='{$name}' name='{$name}' value='{$value}'/>";
+									$modalBody .= "</div>";
+									
 								$modalBody .= "</div>";
 								
-							$modalBody .= "</div>";
 							
+							$modalBody .= "</div>";
+						}
 						
 						$modalBody .= "</div>";
 					}
 					
-					$modalBody .= "</div>";
-				}
-				
-				if (true){
-					
-					$modalBody .= "<div class='col-7'>";
-					
-						$modalBody .= "<img src='img/chart_dimension.png' class='img-fluid'/>";
-					
-					$modalBody .= "</div>";
-				}
-				
-		
-			$modalBody .= "</div>";
+					if (true){
+						
+						$modalBody .= "<div class='col-7'>";
+						
+							$modalBody .= "<img src='img/chart_dimension.png' class='img-fluid'/>";
+						
+						$modalBody .= "</div>";
+					}
+				$modalBody .= "</div>";
+			}
+			
+			
 			
 			
 		$modalBody .= "</div>";
