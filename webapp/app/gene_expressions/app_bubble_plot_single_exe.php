@@ -83,6 +83,7 @@ if ($_POST['graphLibrary'] == ''){
 
 if ($_POST['graphLibrary'] == 'Plotly'){
 	if ($_POST['subplotBy'] == ''){
+		
 		$results = prepareSingleBubblePlotDataByGeneName_Plotly_Single_v2($geneIndex, $otherOptions);
 		$chartFile = 'app_bubble_plot_single_exe_tab_Plotly_single_v2.php';
 		
@@ -97,18 +98,7 @@ if ($_POST['graphLibrary'] == 'Plotly'){
 		$results = prepareSingleBubblePlotDataByGeneName_Plotly_Subplot_v2($geneIndex, $otherOptions);
 		$chartFile = 'app_bubble_plot_single_exe_tab_Plotly_subplot_v2.php';
 	}
-} elseif ($_POST['graphLibrary'] == 'CanvasXpress'){
-	
-	if (($_POST['subplotBy'] != '') && ($_POST['subplotBy_settings'] == -1) && (array_size($_POST['subplotBy_customize']) > 0)){
-		$otherOptions['subplotBy_settings'] 	= -1;	
-		$otherOptions['subplotBy_customize'] 	= $_POST['subplotBy_customize'];
-	}
-	
-	$otherOptions['subplotBy'] = $_POST['subplotBy'];
-	$results = prepareSingleBubblePlotDataByGeneName_CanvasXpress($geneIndex, $otherOptions);
-	$chartFile = 'app_bubble_plot_single_exe_tab_CanvasXpress.php';
 }
-
 
 
 
@@ -139,27 +129,6 @@ if ($_POST['API']){
 } else {
 	echo "<div class='row'>";
 		echo "<div class='col-12'>";
-		
-		if (true){	
-			unset($researchProjectAPI);
-			$researchProjectAPI['Title'] 				= $results['Summary']['Chart']['Title_Single_Line'];
-			$researchProjectAPI['Type'] 				= 'Comparison Plotting Tool';
-			$researchProjectAPI['Source_Page'] 			= 'Bubble Plot';
-			$researchProjectAPI['URL'] 					= "gene_expressions/{$_POST['URL']}?key={$urlKey}";
-			$researchProjectAPI['Parameters'] 			= $urlKey;
-			
-			if ($_POST['graphLibrary'] == 'CanvasXpress'){
-				$researchProjectAPI['Base64_Image_ID'] 		= 'plotSection';
-			} elseif ($_POST['graphLibrary'] == 'Plotly'){
-				$researchProjectAPI['Base64_Image_JS_Code'] = '$("#pngCode").val();';
-				$researchProjectAPI['SVG_JS_Code']			= '$("#svgCode").val();';
-			}
-
-			
-			include('app_research_project_api_modal.php');
-			unset($researchProjectAPI);
-		}
-		
 	
 		if (true){
 			
